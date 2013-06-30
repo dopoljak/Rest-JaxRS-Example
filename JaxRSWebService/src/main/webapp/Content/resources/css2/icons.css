@@ -1,0 +1,77 @@
+
+.x-icon-tickets {
+    background-image: url('../example/tickets.png');
+}
+.x-icon-subscriptions {
+    background-image: url('../example/subscriptions.png');
+}
+.x-icon-users {
+    background-image: url('../example/group.png');
+}
+.x-icon-templates {
+    background-image: url('../example/templates.png');
+}
+
+
+.icon-menu {
+    background-image: url('../icons/application_cascade.png');
+}
+.icon-user {
+    background-image: url('../icons/user.png');
+}
+
+
+.icon-group {
+    background-image: url('../icons/group.png');
+}
+.icon-documents {
+    background-image: url('../icons/page_white_word.png');
+}
+.icon-package {
+    background-image: url('../icons/package.png');
+}
+.icon-org {
+    background-image: url('../icons/shape_group.png');
+}
+.icon-telephone {
+    background-image: url('../icons/telephone.png');
+}
+.icon-cog {
+    background-image: url('../icons/cog.png');
+}
+.icon-help {
+    background-image: url('../icons/help.png');
+}
+.icon-delete {
+    background-image: url('../icons/delete.png');
+}
+.icon-add {
+    background-image: url('../icons/add.png');
+}
+.icon-read {
+    background-image: url('../icons/application_view_detail.png');
+}
+.icon-update {
+    background-image: url('../icons/page_edit.png');
+}
+
+.icon-connect {
+    background-image: url('../icons/connect.png');
+}
+.icon-disconnect {
+    background-image: url('../icons/disconnect.png');
+}
+.icon-find {
+    background-image: url('../icons/find.png');
+}
+
+
+.icon-info {
+    background-image: url('../icons/information.png');
+}
+.icon-calendar {
+    background-image: url('../icons/calendar.png');
+}
+.icon-book-open {
+    background-image: url('../icons/book_open.png');
+}
