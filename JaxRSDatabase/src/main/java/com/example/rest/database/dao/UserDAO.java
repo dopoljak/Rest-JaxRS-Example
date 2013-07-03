@@ -12,8 +12,8 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
 /**
- *
- * @author dpoljak
+ * 
+ * @author DoDo <dopoljak@gmail.com>
  */
 public class UserDAO  extends GenericDAO<User, Serializable>
 {

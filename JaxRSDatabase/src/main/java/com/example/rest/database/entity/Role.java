@@ -17,8 +17,8 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
- * @author dopoljak@gmail.com
+ * 
+ * @author DoDo <dopoljak@gmail.com>
  */
 @JsonIgnoreProperties(value = { "" })
 @Entity

@@ -38,14 +38,13 @@ import com.sun.jersey.api.client.ClientResponse.Status;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @author dopoljak@gmail.com
+ *      ### LOG FILTER ###
  * 
- *         ### LOG FILTER ###
+ *      This LogFilter only changes thread name so output of Log4j can be
+ *      nicely formated :) It also outputs request and response (response can
+ *      be tricky) in slf4j debug mode
  * 
- *         This LogFilter only changes thread name so output of Log4j can be
- *         nicely formated :) It also outputs request and response (response can
- *         be tricky) in slf4j debug mode
- * 
+ * @author DoDo <dopoljak@gmail.com>
  */
 public class LogFilter implements Filter
 {
@@ -153,7 +152,7 @@ public class LogFilter implements Filter
 	catch (Throwable e)
 	{
 	    log.error("LogFilter error: ", e);
-	    log.info("Rollinback transaction silently ...");
+	    log.info("Rollback transaction silently ...");
 	    HibernateUtil.rollbackTransactionSilently();
 	    
 	    /** set response data **/

@@ -1,7 +1,6 @@
 package com.example.rest.database.dao;
 
 import com.example.rest.database.base.GenericDAO;
-import com.example.rest.database.entity.UserRole;
 import com.example.rest.database.entity.UserStatus;
 import java.io.Serializable;
 

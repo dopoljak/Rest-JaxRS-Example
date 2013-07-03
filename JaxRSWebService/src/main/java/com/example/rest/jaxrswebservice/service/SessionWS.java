@@ -33,8 +33,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 /**
- *
- * @author DoDo
+ * REST Service for Session resource
+ * 
+ * @author DoDo <dopoljak@gmail.com>
  */
 @RequestScoped
 @Path("/sessions")
@@ -89,7 +90,7 @@ public class SessionWS
 	    throw new JaxRSException(Status.UNAUTHORIZED, "Session is null, enter username & password!");
 	}
 
-	// load User from Database
+	// DB: load User from Database
         User user = userDAO.findByUsernamePassword(username, password);
 	if (user == null)
 	{
@@ -145,12 +146,12 @@ public class SessionWS
 
 	log.info("For username = {}, loaded permissions are = {}", username, permissionIDs.toString());
 
-	/** create session data **/
+	// create session data
 	UserSession userSession = new UserSession();
         userSession.setPermissions(permissionIDs);
 	userSession.setUser(user);
 
-        /** add to session **/
+        // add to session
 	request.getSession(true).setAttribute(UserSession.USER_SESSION, userSession);
 	
 	log.info("Created new session = {}", userSession);

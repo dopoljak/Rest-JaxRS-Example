@@ -11,8 +11,8 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 
 /**
- *
- * @author dpoljak
+ * 
+ * @author DoDo <dopoljak@gmail.com>
  */
 public abstract class GenericDAO<T, ID extends Serializable>
 {

@@ -1,17 +1,29 @@
 package com.example.rest.database.base;
 
 /**
- *
- * @author DoDo
+ * 
+ * @author DoDo <dopoljak@gmail.com>
  */
 public class AuditField
 {
-    public int index;
-    public Object value;
+    private int index;
+    private Object value;
 
     public AuditField(int index, Object value)
     {
         this.index = index;
         this.value = value;
     }
+
+    public int getIndex()
+    {
+        return index;
+    }
+
+    public Object getValue()
+    {
+        return value;
+    }
+    
+    
 }

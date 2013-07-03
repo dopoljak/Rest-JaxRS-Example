@@ -5,10 +5,9 @@ import javax.ws.rs.WebApplicationException;
 import com.sun.jersey.api.client.ClientResponse.Status;
 
 /**
- * @author dpoljak
+ * Main exception class with HTTP Status code & message
  * 
- *         Main exception class with HTTP Status code & message
- * 
+ * @author DoDo <dopoljak@gmail.com>
  */
 public class JaxRSException extends WebApplicationException
 {

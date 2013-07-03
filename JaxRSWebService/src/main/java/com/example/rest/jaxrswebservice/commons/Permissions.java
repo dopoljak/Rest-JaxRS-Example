@@ -1,9 +1,9 @@
 package com.example.rest.jaxrswebservice.commons;
 
 /**
- * @author dopoljak@gmail.com
+ * Permissions for Role Based Authorization
  * 
- *         Permissions for Role Based Authorization
+ * @author DoDo <dopoljak@gmail.com>
  */
 public enum Permissions
 {

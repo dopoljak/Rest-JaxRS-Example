@@ -4,9 +4,9 @@ import org.slf4j.helpers.FormattingTuple;
 import org.slf4j.helpers.MessageFormatter;
 
 /**
- * Very fast String/HEX utility
+ * String manipulation utils
  * 
- * @author dopoljak@gmail.com
+ * @author DoDo <dopoljak@gmail.com>
  */
 public class Strings
 {

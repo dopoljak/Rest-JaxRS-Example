@@ -1,6 +1,9 @@
 	
 var requiredStyle = '<span style="color:red;font-weight:bold" data-qtip="Required">*</span>';
 
+/**
+ * Global failure exception
+ */
 function failureException(response) 
 {
     var title   = response.status + ' - ' + response.statusText;
@@ -15,6 +18,9 @@ function failureException(response)
     });
 };
 
+/**
+ * REST exception (process status codes)
+ */
 function restException(proxy, response, options) 
 {
     //console.log('------------------------ restException ---------------------------');

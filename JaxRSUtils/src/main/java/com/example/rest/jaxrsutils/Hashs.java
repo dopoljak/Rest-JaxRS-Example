@@ -5,8 +5,9 @@ import java.security.NoSuchAlgorithmException;
 
 
 /**
- *
- * @author DoDo
+ * Utility class for manipulating date and time
+ * 
+ * @author DoDo <dopoljak@gmail.com>
  */
 public class Hashs
 {

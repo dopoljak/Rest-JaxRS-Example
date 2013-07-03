@@ -22,10 +22,9 @@ import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
- * @author dpoljak
+ * 
+ * @author DoDo <dopoljak@gmail.com>
  */
-
 @JsonIgnoreProperties(value = { "userRoles", "auditFields", "hibernateLazyInitializer", "handler" })
 @Entity
 @Table(name = "USER")

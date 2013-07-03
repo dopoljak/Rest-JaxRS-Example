@@ -86,9 +86,6 @@ function showUsersGridTab()
                     var selection = userGrid.getView().getSelectionModel().getSelection()[0];
     	            if (selection) {
                         userStore.remove(selection);
-    	                //userStore.commitChanges();
-    	                //userStore.commit();
-    	                //userStore.reload();
     	                userStore.sync();
     	            }
     	            else 
@@ -109,32 +106,14 @@ function showUsersGridTab()
     	        iconCls	: 'icon-read',
     	        handler	: function()
     	        {
-                    var selection = userGrid.getView().getSelectionModel().getSelection()[0];
-      	            if (selection) 
-      	            {
-                        /*
-                        var newUserTab = mainCenterTabs.add
-      	                ({
-                            closable	: true,
-                            iconCls	    : 'tabs',
-                            title		: 'Osobno - ' + selection.get('username') //selection.username
-      	                }).show();
-
-      	                mainCenterTabs.setActiveTab(newUserTab);*/
-
-      	                mainMenuUserDetailsClicked(mainCenterTabs, 'DoDo1122');
-      	            }
-      	            else 
-      	            {
-                        Ext.MessageBox.show
-        	        ({    	            		
-                            title   : 'Warning',
-        	            msg	    : 'You must select et least one row to open user details tab!',
-        		    icon    : Ext.MessageBox.WARNING,
-        		    buttons : Ext.Msg.OK
-        	        });
-      	            }
-    	         }
+                    Ext.MessageBox.show
+                    ({    	            		
+                        title   : 'Warning',
+        	        msg     : 'Not implemented!',
+        		icon    : Ext.MessageBox.WARNING,
+        		buttons : Ext.Msg.OK
+                    });
+    	        }
     	      }]
     	    }],
     	    // paging bar on the bottom
@@ -161,12 +140,9 @@ function showUsersGridTab()
         [
             // LEFT
             {
-                //region  : 'west',
                 region    : 'center',
                 layout    : 'fit',
-                //plain   : true,
-                margins   : '5 5 5 5',                        
-                //width	  :  300,
+                margins   : '5 5 5 5',
                 bodyStyle : 'background:#f1f1f1',
                 items 	  : userGrid
             },
@@ -175,7 +151,6 @@ function showUsersGridTab()
                 title       : 'Filter options',
                 region      : 'east',
                 margins     : '5 5 5 0',
-                //bodyStyle   : 'background:#f1f1f1',
                 width       : 250,
                 minWidth    : 250,
                 maxWidth    : 250,
@@ -185,7 +160,7 @@ function showUsersGridTab()
                 {
                     region     : 'center',
                     title      : 'Generic Form Panel',
-                    bodyStyle  : 'padding: 10px; background-color: #DFE8F6',
+                    bodyStyle  : 'padding: 10px;',
                     labelWidth : 100,
                     margins    : '0 0 0 3',
                     items      : 
@@ -219,9 +194,9 @@ function showUsersGridTab()
                     ]
                  }]
               }
-                //,
-                //CENTER
-                //userTabs
+              //,
+              //CENTER
+              //userTabs
          ]
     }).show();
 

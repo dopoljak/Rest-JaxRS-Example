@@ -24,8 +24,6 @@ import com.sun.jersey.spi.container.ResourceFilterFactory;
 import javax.servlet.http.HttpSession;
 
 /**
- * @author dopoljak@gmail.com
- * 
  * 	   This is Jersey (JAX-RS) based resource filter which intercepts all requests 
  * 	   directed to '/API/*' (all services written using JAX-RS) URL.
  * 
@@ -53,6 +51,7 @@ import javax.servlet.http.HttpSession;
  *         
  *         AuditLog record is created in separated database transaction
  * 
+ *  @author DoDo <dopoljak@gmail.com>
  */
 public class JAXFilter implements ResourceFilterFactory
 {

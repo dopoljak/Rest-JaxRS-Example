@@ -11,9 +11,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 /**
- *
- * @author dpoljak
  * 
+ * @author DoDo <dopoljak@gmail.com>
  */
 @JsonIgnoreProperties(value = { "admins" })
 @Entity

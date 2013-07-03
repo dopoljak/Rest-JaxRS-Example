@@ -7,10 +7,9 @@ import java.lang.annotation.Target;
 
 
 /**
- * @author dopoljak@gmail.com
+ * Simple interface for Permission annotation purpose
  * 
- *         Simple interface for Permission annotation purpose
- * 
+ * @author DoDo <dopoljak@gmail.com>
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.METHOD })

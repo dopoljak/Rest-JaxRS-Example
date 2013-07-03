@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 /**
  * Annotation used for Auditing fields
  * 
- * @author DoDo
+ * @author DoDo <dopoljak@gmail.com>
  */
 @Target( value = { ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.FIELD } )
 @Retention(value = RetentionPolicy.RUNTIME)

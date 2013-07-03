@@ -7,12 +7,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 /**
- * @author dopoljak@gmail.com
+ * Wrapper class which unifies all JSON/XML responses
  * 
- *         Wrapper class which unifies all JSON/XML responses
- * 
+ * @author DoDo <dopoljak@gmail.com>
  */
-
 @XmlRootElement
 @XmlType(propOrder = { "total", "data" })
 @JsonInclude(Include.NON_NULL)

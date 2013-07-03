@@ -20,17 +20,21 @@ import com.example.rest.database.entity.User;
 import com.example.rest.database.entity.UserRole;
 import com.example.rest.database.entity.UserStatus;
 import com.example.rest.jaxrsutils.Hashs;
+import com.example.rest.jaxrsutils.POMUtils;
 import com.example.rest.jaxrsutils.Strings;
 import com.example.rest.jaxrswebservice.commons.Permissions;
 import java.util.Date;
+import java.util.Properties;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
+import org.hibernate.cfg.Environment;
 import org.slf4j.LoggerFactory;
 
 /**
- *
- * @author dpoljak
+ * Initialization servlet 
+ * 
+ * @author DoDo <dopoljak@gmail.com>
  */
 public class InitializationServlet  extends HttpServlet
 {
@@ -43,19 +47,37 @@ public class InitializationServlet  extends HttpServlet
 	final String oldThreadName = Thread.currentThread().getName();
 	Thread.currentThread().setName("InitializationServlet");
 
-	/**
-	 * Load parameters from servlet config
-	 */
-	Config.initialize(servletConfig);
+        // INITIALIZE LOGGER
+        log.info("Initializing logger ...");
+        initializeLogger();
 
-	
+        // INITIALIZE DATABASE
+        log.info("Initializing database ...");
+        initializeDatabase();
+
+        // INSERT TEST DATA        
+        log.info("Inserting test data ...");
+        createAndInsertTestData();
         
-        /** initialize logger **/
-        
+        // GET MODULES VERSION
+        String JaxRSWebService  = POMUtils.getVersion("com.example.rest", "JaxRSWebService");
+        String JaxRSUtils       = POMUtils.getVersion("com.example.rest", "JaxRSUtils");
+        String JaxRSDatabase    = POMUtils.getVersion("com.example.rest", "JaxRSDatabase");
+
+	log.info("Started JaxRSWebService = {}, JaxRSUtils = {}, JaxRSDatabase = {}", new Object[] { JaxRSWebService, JaxRSUtils, JaxRSDatabase } );
+	System.out.println("Started JaxRSWebService = " + JaxRSWebService + ", JaxRSUtils = " + JaxRSUtils + ", JaxRSDatabase = " + JaxRSDatabase);
+
+	Thread.currentThread().setName(oldThreadName);
+    }
+
+    /**
+     * Initialize Logback(SLF4J)
+     */
+    private void initializeLogger()
+    {
         // ROOT LOGGER
         Logger rootLogger = (Logger)LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
         LoggerContext loggerContext = rootLogger.getLoggerContext();
-        // we are not interested in auto-configuration
         loggerContext.reset();
         
         // PATERN
@@ -81,27 +103,49 @@ public class InitializationServlet  extends HttpServlet
         // WELD LOGGER
         Logger weldLogger = (Logger)LoggerFactory.getLogger("org.jboss.weld");
         weldLogger.setLevel(Level.INFO);
+    }
 
-        
-	/** DUMP all configuration properties to LOG **/
-	log.info("Loaded configuration properties are: {}", Config.getInitializedParameters());
+    /**
+     * Initialize database Hibernate + H2 in-memmory database
+     */
+    private void initializeDatabase()
+    {
+         // DB PROPERTIES
+        final Properties dbProperties = new Properties() 
+        {{
+            setProperty(Environment.URL, "jdbc:h2:mem:test");
+            setProperty(Environment.USER, "sa");
+            setProperty(Environment.PASS, "");
+            //setProperty(Environment.DEFAULT_SCHEMA, DB_SCHEMA);
+            setProperty(Environment.DIALECT, "org.hibernate.dialect.H2Dialect");
+            setProperty(Environment.DRIVER, "org.h2.Driver");
 
-	/** initialize database **/
-	log.info("Hibernate initialization ...");
-	HibernateUtil.initialize(Config.getDBProperties());
+            // common configuration
+            setProperty(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
+            setProperty(Environment.SHOW_SQL, "false");
+            setProperty(Environment.FORMAT_SQL, "false");
+            setProperty(Environment.POOL_SIZE, "10");
+            setProperty(Environment.USE_SECOND_LEVEL_CACHE, "false");
+            setProperty(Environment.C3P0_ACQUIRE_INCREMENT, "2");
+            setProperty(Environment.C3P0_IDLE_TEST_PERIOD, "300");
+            setProperty(Environment.C3P0_TIMEOUT, "1800");
+            setProperty(Environment.AUTOCOMMIT, "false");
 
-        /*
-        String JaxRSWebService  = POMUtils.getVersion("com.example", "JaxRSWebService");
-        String JaxRSUtils  = POMUtils.getVersion("com.example", "JaxRSUtils");
-        String JaxRSDatabase     = POMUtils.getVersion("com.example", "JaxRSDatabase");
+            // GENERATE SCHEMA ON THE FLY
+            setProperty(Environment.FORMAT_SQL, "true");
+            setProperty(Environment.HBM2DDL_AUTO, "create");
+        }};
 
-	log.info("Started JaxRSWebService = {}, JaxRSUtils = {}, JaxRSDatabase = {}", new Object[] { JaxRSWebService, JaxRSUtils, JaxRSDatabase } );
-	System.out.println("Started JaxRSWebService = " + JaxRSWebService + ", JaxRSUtils = " + JaxRSUtils + ", JaxRSDatabase = " + JaxRSDatabase);
-        */
+        HibernateUtil.initialize(dbProperties);
+    }
 
-        log.info("Started JaxRSWebService ");
-	System.out.println("Started JaxRSWebService ");
-
+    /**
+     * DEFAULT USERNAME/PASSWORD: dodo/dodo
+     * 
+     * Create and insert test data ( default user + password )
+     */
+    private void createAndInsertTestData()
+    {
         try 
         {            
             log.info("started inserting test data ...");
@@ -171,10 +215,9 @@ public class InitializationServlet  extends HttpServlet
             HibernateUtil.rollbackTransactionSilently();
             log.error("Inserting test data error: ", e);
         }
-                
-	Thread.currentThread().setName(oldThreadName);
     }
-
+    
+    
     @Override
     public void destroy()
     {
@@ -191,5 +234,5 @@ public class InitializationServlet  extends HttpServlet
 
         log.info("InitializationServlet: ########## DESTROY ##########");
     }
-    
+
 }

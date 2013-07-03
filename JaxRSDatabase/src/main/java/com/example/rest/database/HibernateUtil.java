@@ -15,12 +15,14 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
 /**
- *
- * @author dpoljak
+ * Utility class for Hibernate session/transaction manipulation
+ * 
+ * @author DoDo <dopoljak@gmail.com>
  */
 public class HibernateUtil 
 {
@@ -89,7 +91,10 @@ public class HibernateUtil
 	Transaction transaction = sessionfactory.getCurrentSession().getTransaction();
 	try
 	{
-	    transaction.rollback();
+            if(transaction != null && transaction.isActive())
+            {
+                transaction.rollback();
+            }
 	}
 	catch (HibernateException e)
 	{
@@ -184,14 +189,13 @@ public class HibernateUtil
         config.addAnnotatedClass(UserRoleId.class);
         config.addAnnotatedClass(UserStatus.class);
 
-	/*
 	// if trace mode is enabled	
 	if(log.isTraceEnabled()) 
 	{
 	    config.setProperty(Environment.DRIVER, "com.p6spy.engine.spy.P6SpyDriver");
 	    config.setProperty("org.hibernate.SQL", "trace" );
 	    config.setProperty("org.hibernate.type", "trace" );
-	}*/
+	}
 
 	// Override properties
 	Enumeration<?> enumeration = properties.propertyNames();

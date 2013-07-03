@@ -30,11 +30,13 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 /**
- *
- * @author DoDo
+ * REST Service for User resource
+ * 
+ * @author DoDo <dopoljak@gmail.com>
  */
-@RequestScoped
+
 @Path("/users")
+@RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class UsersWS
@@ -55,13 +57,13 @@ public class UsersWS
     {
 	log.info("entry: getAll() : limit = {}, offset = {}, sort = {}, order = {}", new Object[] { limit, offset, sort, order });
 
-	/** DB: count all & load filtered **/
+	// DB: count all & load filtered
 	final Long total = userDAO.count();
 	final List<User> list = userDAO.find(limit, offset, order, sort);
 
 	log.info("total size of all Users = {}, number of loaded Users = {}", total, list.size());
 
-	/** RESPONSE **/
+	// SEND: response wrapper
 	final Wrapper<List<User>> returnMe = new Wrapper<List<User>>();
 	returnMe.setTotal(total);
 	returnMe.setData(list);

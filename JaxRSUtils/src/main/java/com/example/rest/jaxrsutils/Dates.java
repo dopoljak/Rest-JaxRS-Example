@@ -4,10 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @author dopoljak@gmail.com
+ * Utility class for manipulating date and time
  * 
- *         Utility class for manipulating date and time
- * 
+ * @author DoDo <dopoljak@gmail.com>
  */
 public class Dates
 {

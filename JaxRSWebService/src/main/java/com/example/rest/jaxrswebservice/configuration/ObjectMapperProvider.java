@@ -8,10 +8,8 @@ import javax.ws.rs.ext.Provider;
 /**
  * Jackson JSON Jersey JAX-RS ObjectMapper Initialization
  * 
- * @author dpoljak
- * 
+ * @author DoDo <dopoljak@gmail.com>
  */
-
 @Provider
 public class ObjectMapperProvider implements ContextResolver<ObjectMapper>
 {

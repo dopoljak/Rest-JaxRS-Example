@@ -1,10 +1,9 @@
 package com.example.rest.jaxrsutils;
 
 /**
- * @author dopoljak@gmail.com
+ * Simple class for measuring execution time
  * 
- *         Simple class for measuring execution time
- * 
+ * @author DoDo <dopoljak@gmail.com>
  */
 public class StopWatch
 {

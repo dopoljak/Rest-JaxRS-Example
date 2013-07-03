@@ -51,6 +51,7 @@
             var mainStatus        = null;
             var userSession       = null;
             var mainHeaderToolbar = null;
+            var currentTheme      = 'classic';
 
             Ext.onReady(function() 
             {
@@ -124,8 +125,32 @@
                          		scale	  : 'large',
                          		iconAlign : 'left'
                                     },
-                                    items: 
+                                    items:
                                     [{
+                                        text: 'Clasic',
+                                        scale	: 'small',
+					width	: 130,
+                                        iconCls: 'icon-bank',    
+                                        colspan	: 2,
+                                        checked: currentTheme === 'classic' ? true : false,
+                                        handler: function() 
+                                        {
+                                            currentTheme = 'classic';
+                                            Ext.util.CSS.swapStyleSheet("theme", window.location.origin + "/JaxRSWebService/Content/resources/css/ext-all.css");
+                                        }
+                                    },{
+                                        text:  'Gray',
+                                        scale	: 'small',
+					width	: 130,
+                                        colspan	: 2,
+                                        iconCls: 'icon-bank',                    
+                                        checked: currentTheme === 'gray' ? true : false,
+                                        handler: function() 
+                                        {
+                                            currentTheme = 'gray';
+                                            Ext.util.CSS.swapStyleSheet("theme", window.location.origin + "/JaxRSWebService/Content/resources/css/ext-all-gray.css");
+                                        }
+                                   },{
                                         iconCls	: 'icon-group',
 					colspan	: 2,
 					text	: 'Users',

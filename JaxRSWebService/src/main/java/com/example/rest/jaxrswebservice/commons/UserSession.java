@@ -3,12 +3,10 @@ package com.example.rest.jaxrswebservice.commons;
 import com.example.rest.database.entity.User;
 import java.util.Set;
 
-
 /**
- * @author dpoljak
+ * Class that store user parameters for current session
  * 
- *         Class that store user parameters for current session
- * 
+ * @author DoDo <dopoljak@gmail.com>
  */
 public class UserSession
 {
